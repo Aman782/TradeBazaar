@@ -4,9 +4,9 @@ const Contact = () => {
   return (
     <>
       <div className="container my-5 fontstyle">
-        <div className="row">
+        <div className="row d-flex justify-content-evenly">
           {/* Contact Form Section */}
-          <div className="col-md-6">
+          <div className="col-md-5">
             <h2 className="mb-4">Get in Touch</h2>
             <form>
               <div className="mb-3">
@@ -38,13 +38,13 @@ const Contact = () => {
                   placeholder="Write your message here..."
                   required
                 ></textarea>
-              </div>``
+              </div>
               <button type="submit" className="btn btn-dark">Send Message</button>
             </form>
           </div>
 
           {/* Contact Details Section */}
-          <div className="col-md-6">
+          <div className="col-md-4">
             <h2 className="mb-4">Contact Information</h2>
             <p><strong>Email:</strong> <a href="mailto:support@tradebaazaar.com">support@tradebaazaar.com</a></p>
             <p><strong>Phone:</strong> <a href="tel:+1234567890">+1 234 567 890</a></p>
