@@ -1,10 +1,13 @@
 import React from 'react'
 import FreeSignup from './FreeSignup';
+import WrapPeopleCards from './WrapPeopleCards';
+import Profile from './Profile';
+import FAQ from './FAQ';
 
 const About = () => {
   return (
     <>
-      <div className='container-fluid fontstyle'>
+      <div className='container-fluid fontstyle' style={{ backgroundColor: "#f4f8fc" }}>
         <div className='row d-flex justify-content-evenly align-items-center'>
            <div className='col-md-6 p-5'>
              <h2 className='fw-semibold'>TradeBazaar</h2>
@@ -20,6 +23,9 @@ const About = () => {
       </div>
 
       <FreeSignup />
+      <Profile />
+      <WrapPeopleCards />
+      <FAQ />
     </>
   )
 }
