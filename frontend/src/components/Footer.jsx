@@ -40,7 +40,26 @@ const Footer = () => {
             </div>
 
           </div>
-          
+
+          {/* Disclaimer Section */}
+          <div className="row mt-4">
+            <div className="col">
+              <h6 className="fw-bold">Attention Investors & Disclaimer</h6>
+              <p className="small">
+                TradeBaazaar Securities Pvt. Ltd.: SEBI Registration No. INZ000315837 | NSE TM Code: 13942 | BSE TM Code: 6155 | CDSL Reg No.: IN-DP-761-2024 | CIN: U65100DL2021PTC376860 | Compliance Officer: Mr. Kapil Jaikalyani. Tel No.: (022) 24229920. Email ID: compliance@tradebaazaar.com | Registered Address: 809, New Delhi House, Barakhamba Road, Connaught Place, New Delhi - 110001 | RKSV Commodities India Pvt. Ltd.: SEBI Registration No.: INZ000015837 | MCX TM Code: 46510 | NSE TM Code: 90393 | CIN: U74900DL2009PTC189166 | Compliance Officer: Mr. Amit Lalan. Tel No.: (022) 24229920. Email ID: compliance@rksv.in | Registered Address: 807, New Delhi House, Barakhamba Road, Connaught Place, New Delhi - 110001. Correspondence Address: 30th Floor, Sunshine Tower, Senapati Bapat Marg, Dadar (West), Mumbai - 400013.
+              </p>
+              <p className="small">
+                Procedure to file a complaint on SEBI SCORES: Register on the SCORES portal. Mandatory details for filing complaints on SCORES include: Name, PAN, Address, Mobile Number, and E-mail ID. Benefits include effective communication and speedy redressal of grievances. Please ensure you carefully read the Risk Disclosure Document as prescribed by SEBI, along with our Terms of Use and Privacy Policy.
+              </p>
+              <p className="small">
+                Disclaimer: Investment in securities markets is subject to market risks, read all the related documents carefully before investing. Brokerage will not exceed the SEBI prescribed limit.
+              </p>
+              <p className="small">
+                Mutual Funds: Top rated funds do not constitute any advice. Please read the offer documents carefully before investing. TradeBaazaar shall not accept any liability arising out of your investments.
+              </p>
+            </div>
+          </div>
+
           {/* Copyright Section */}
           <div className="row mt-4">
             <div className="col text-center">
