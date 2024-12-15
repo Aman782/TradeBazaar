@@ -53,7 +53,7 @@ const Hero = () => {
 
           <div className="col-md-5 text-center">
             <img
-              src="/images/HeroImg5.jpg"
+              src="/images/trader-future-banner.webp"
               alt="Hero Section"
             />
           </div>

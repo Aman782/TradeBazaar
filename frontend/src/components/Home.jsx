@@ -3,6 +3,8 @@ import Hero from './Hero'
 import FAQ from './FAQ'
 import FreeSignup from './FreeSignup'
 import Pricing from './Pricing'
+import Dynamic from './Dynamic'
+import StudyFinance from './StudyFinance'
 
 const Home = () => {
   return (
@@ -10,7 +12,8 @@ const Home = () => {
         <Hero />  
         <FreeSignup />
         <Pricing />
-        <FAQ />      
+        <Dynamic />
+        <StudyFinance />    
     </>
   )
 }
