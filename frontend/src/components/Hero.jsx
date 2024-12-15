@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Hero.css';
 const Hero = () => {
   return (
     <>
@@ -55,12 +55,6 @@ const Hero = () => {
             <img
               src="/images/HeroImg5.jpg"
               alt="Hero Section"
-              style={{
-                height: "90%",
-                width: "90%",
-                borderRadius: "10px",
-                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-              }}
             />
           </div>
         </div>
