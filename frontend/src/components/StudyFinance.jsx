@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import Webinar from "./Webinar";
 import FAQ from "./FAQ";
 
@@ -30,9 +31,9 @@ const StudyFinance = () => {
           <div className="col-md-12 d-flex flex-column">
             <Webinar />
             <div className="d-flex justify-content-center align-items-center p-4">
-              <button className="btn btn-primary fs-5 inline">
+              <Link to={"/explore"} className="btn btn-primary fs-5 inline">
                 Explore Videos <i className="fa-solid fa-circle-play"></i>
-              </button>
+              </Link>
             </div>
           </div>
         </div>

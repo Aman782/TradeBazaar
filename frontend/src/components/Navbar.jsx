@@ -37,15 +37,15 @@ const Navbar = () => {
               </Link>
 
               <Link
-                to={"/services"}
+                to={"/explore"}
                 className="mx-4 fs-5 text-decoration-none text-black"
               >
-                Services
+                Explore <i className="fa-solid fa-angles-right"></i>
               </Link>
             </ul>
           </div>
 
-          <div className="col-md-2 d-flex align-items-center justify-content-center">
+          <div className="col-md-2 d-flex align-items-center justify-content-center fontstyle">
             <ul className="d-flex justify-content-evenly">
               <Link
                 to={"/signup"}
