@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {Link} from 'react-router-dom'
-
+import {Link, useNavigate} from 'react-router-dom'
+import axios from 'axios';
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -8,15 +8,31 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const navigate = useNavigate();
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async(e) => {
     e.preventDefault();
+
+    let user_data = {username, email, password};
+      
+    try {
+      const res = await axios.post("http://localhost:8080/new-user", user_data);
+      console.log(res);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+
     console.log("Username:", username);
     console.log("Email:", email);
     console.log("Password:", password);
+    setUsername('');
+    setEmail('');
+    setPassword('');
   };
 
   return (

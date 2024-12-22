@@ -1,19 +1,35 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async(e) => {
     e.preventDefault();
+
+    const user_data = {email, password};
+
+    try {
+       const res = await axios.post("http://localhost:8080/verify-user", user_data);
+       console.log(res);
+       navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+
     console.log("Email:", email);
     console.log("Password:", password);
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -76,9 +92,6 @@ const Login = () => {
               Login
             </button>
           </form>
-
-          
-
 
         </div>
       </div>
