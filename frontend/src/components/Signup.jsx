@@ -20,7 +20,7 @@ const Signup = () => {
     let user_data = {username, email, password};
       
     try {
-      const res = await axios.post("http://localhost:8080/new-user", user_data);
+      const res = await axios.post("http://localhost:8080/users/register-user", user_data);
       console.log(res);
       navigate('/');
     } catch (error) {

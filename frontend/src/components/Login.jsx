@@ -19,7 +19,7 @@ const Login = () => {
     const user_data = {email, password};
 
     try {
-       const res = await axios.post("http://localhost:8080/verify-user", user_data);
+       const res = await axios.post("http://localhost:8080/users/verify-user", user_data);
        console.log(res);
        navigate("/");
     } catch (error) {
