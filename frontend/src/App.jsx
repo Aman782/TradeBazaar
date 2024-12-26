@@ -9,18 +9,21 @@ import PageNotFound from './components/PageNotFound';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import { useState } from 'react';
 
 function App() {
+ 
+  const [isLoggedIn, setLoggedIn] = useState(false);
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />}/>
         <Route path='/explore' element={<Explore />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup setLoggedIn={setLoggedIn} />} />
+        <Route path='/login' element={<Login setLoggedIn={setLoggedIn} />} />
         <Route path='/*' element={<PageNotFound />} />
       </Routes>
       <Footer />

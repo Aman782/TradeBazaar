@@ -1,12 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, setLoggedIn }) => {
+  
+  const navigate = useNavigate();
+
+  const handleOnLogout = async ()=>{
+    try {
+      const res = await axios.get("http://localhost:8080/users/logout-user",  { withCredentials: true });
+      console.log(res);
+  
+      setLoggedIn(false);
+      navigate('/');
+      alert("User LoggedOut Successfully!");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <div
         className="container-fluid fontstyle py-2"
-        style={{ backgroundColor: "#f8e9e9", border:"0.0001 rem solid black" }}
+        style={{ backgroundColor: "#f8e9e9", border: "0.0001 rem solid black" }}
       >
         <div className="row d-flex justify-content-evenly align-items-center">
           <div className="col-md-2 d-flex align-items-center justify-content-center">
@@ -46,21 +63,20 @@ const Navbar = () => {
           </div>
 
           <div className="col-md-2 d-flex align-items-center justify-content-center fontstyle">
-            <ul className="d-flex justify-content-evenly">
-              <Link
-                to={"/signup"}
-                className="mx-3 fs-5 fw-semibold btn btn-primary text-white text-decoration-none text-black"
-              >
-                Signup
-              </Link>
-              <Link
-                to={"/login"}
-                className="fs-5 fw-semibold btn btn-outline-success text-decoration-none text-black"
-              >
-                Login
-              </Link>
-            </ul>
+          <div className="auth ms-auto">
+        {!isLoggedIn?<> <Link to={"/signup"} className="btn btn-primary btn-lg fs-6 mx-2 fontstyle">
+           Signup
+        </Link>
+
+        <Link to={"/login"} className="btn btn-outline-success btn-lg fs-6 mx-2 fontstyle">
+           Login
+        </Link></>: <Link className="btn btn-outline-success btn-lg fs-6 mx-2 fontstyle" onClick={handleOnLogout}>
+           Logout
+        </Link>}
+         </div>
+        
           </div>
+
         </div>
       </div>
     </>

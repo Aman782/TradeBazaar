@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
-const Signup = () => {
+const Signup = ({setLoggedIn}) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,13 +16,17 @@ const Signup = () => {
 
   const handleOnSubmit = async(e) => {
     e.preventDefault();
-
-    let user_data = {username, email, password};
       
     try {
-      const res = await axios.post("http://localhost:8080/users/register-user", user_data);
-      console.log(res);
+      const response = await axios.post('http://localhost:8080/users/register-user', {
+        username,
+        email,
+        password,
+    });
+      console.log(response.data);
+      setLoggedIn((pre)=> !pre);
       navigate('/');
+      alert("User Registered Successfully!");
     } catch (error) {
       console.log(error);
     }

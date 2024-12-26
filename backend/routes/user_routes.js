@@ -8,4 +8,4 @@ router.route('/verify-user').post(loginUser);
 router.route('/logout-user').get(verify_JWT_Token, logOutUser);
 
 
-export {router as userRoute};
+export {router as userRoutes};

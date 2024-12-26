@@ -1,9 +1,12 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import db_connection from './db/db_connection.js';
+import { verify_JWT_Token } from './middlewares/authentication.js';
 import User from './models/user_models.js';
 import cors from 'cors';
-import { userRoute } from './routes/user_routes.js';
+import { userRoutes } from './routes/user_routes.js';
+import cookieParser from 'cookie-parser';
+
 
 dotenv.config();
 
@@ -14,6 +17,7 @@ app.listen(8080, ()=>{
 });
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({extended:true}));
 app.use(cors({
     origin: "http://localhost:5173",
@@ -27,40 +31,6 @@ app.get('/', (req, res)=>{
     res.send("Hi User!, Welcome");
 })
 
-app.use('/users', userRoute);
+app.use('/users', userRoutes);
 
 
-// app.post('/new-user', async(req, res)=>{
-//    let {username, email, password} = req.body;
-//    const newUser = await User.create({
-//      username: username,
-//      email: email,
-//      password: password,
-//    });
-
-//    const op = await newUser.save();
-//    console.log(op);
-// });
-
-
-// app.post('/verify-user', async (req, res) => {
-//     try {
-//       const { email, password } = req.body;
-  
-//       const user = await User.findOne({ email }); 
-  
-//       if (!user) {
-//         return res.status(404).json({ message: "User does not exist!" });
-//       }
-  
-//       if (user.password === password) {
-//         return res.status(200).json({ message: "Logged in successfully!" });
-//       } else {
-//         return res.status(401).json({ message: "Invalid access! Wrong credentials." });
-//       }
-//     } catch (error) {
-//       console.error("Error in verifying user:", error.message);
-//       return res.status(500).json({ message: "Internal server error" });
-//     }
-//   });
-  

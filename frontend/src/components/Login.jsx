@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({setLoggedIn}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -19,9 +19,13 @@ const Login = () => {
     const user_data = {email, password};
 
     try {
-       const res = await axios.post("http://localhost:8080/users/verify-user", user_data);
+       const res = await axios.post("http://localhost:8080/users/verify-user", user_data,  {
+        withCredentials: true // Sends cookies
+    });
        console.log(res);
+       setLoggedIn((pre)=> !pre);
        navigate("/");
+       alert("User LoggedIn Successfully!");
     } catch (error) {
       console.log(error);
     }
