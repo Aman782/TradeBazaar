@@ -1,6 +1,7 @@
 import User from "../models/user_models.js";
 import jwt from "jsonwebtoken";
 
+
 export const registerUser = async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -97,6 +98,45 @@ export const logOutUser = async (req, res) => {
          return res.status(400).json("Invalid Access Token!");
       }
 };
+
+export const buyingStocks = async(req, res)=>{
+  const {searchText, qty, price} = req.body;
+
+  const userId = req.user._id;
+  const isUserExists = await User.findById(userId);
+  if(!isUserExists){
+    return res.status(404).json("User not Authorized");
+  }
+
+  let netCost = Math.round(qty * price);
+  if(isUserExists.margin < netCost){
+     return res.status(400).json("Insufficient Balance, please add funds!");
+  }
+  
+  let remainingMargin = isUserExists.margin - netCost;
+
+  const newStock = {
+    stockName: searchText,
+    quantity: qty,
+    purchasePrice: price,
+    datePurchased: Date.now(),
+  }
+
+  try {
+    const updatedUserInfo = await User.findByIdAndUpdate(userId, {
+      $push: {holdings: newStock},
+      $set: { margin: remainingMargin },
+    },
+  {new: true,
+    validateBeforeSave: false
+  }
+  );
+  console.log(updatedUserInfo);
+  } catch (error) {
+    return res.status(500).json("Internal Error, try again!");
+  }
+}
+
 
 // const generateAccessTokenAndRefreshToken = async (userId) => {
 //   const user = await User.findById(userId);

@@ -3,15 +3,14 @@ import { Schema } from "mongoose";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-
 const userSchema = new Schema({
-    username:{
-        type:String,
+    username: {
+        type: String,
         required: true,
-        unique:true,
+        unique: true,
     },
 
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true,
@@ -19,13 +18,29 @@ const userSchema = new Schema({
 
     password: {
         type: String,
-        required: true,     
+        required: true,
     },
 
-    refreshToken:{
+    refreshToken: {
         type: String,
     },
-}, {timestamps: true});
+
+    holdings: [
+        {
+            stockName: { type: String, required: true },  
+            quantity: { type: Number, required: true },    
+            purchasePrice: { type: Number, required: true }
+        }
+    ],
+
+    margin: {
+        type: Number,
+        required: true,
+        default: 0, 
+    }
+
+}, { timestamps: true });
+
 
 
 userSchema.pre("save", async function(next){

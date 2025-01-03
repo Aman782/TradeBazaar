@@ -25,7 +25,7 @@ const Login = ({setLoggedIn}) => {
        console.log(res);
        setLoggedIn((pre)=> !pre);
        navigate("/");
-       alert("User LoggedIn Successfully!");
+       alert("User2 LoggedIn Successfully!");
     } catch (error) {
       console.log(error);
     }
