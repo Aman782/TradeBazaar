@@ -137,6 +137,43 @@ export const buyingStocks = async(req, res)=>{
   }
 }
 
+export const addFunds = async(req, res)=>{
+  try {
+     const {updatedBalance} = req.body;
+     console.log(updatedBalance);
+     const userId = req.user._id;
+  
+      const user = await User.findById(userId);
+      if(!user){
+        return res.status(404).json("User does not Exists, Invalid Access!");
+      }
+  
+      const updatedUserInfo = await User.findByIdAndUpdate(userId, {
+        $set: {margin: updatedBalance}, 
+      }, {
+        new:true,
+        validateBeforeSave: false
+      });
+  
+      console.log(updatedUserInfo);
+      return res.status(201).json("Funds Added Successfully!");
+  } catch (error) {
+    return res.status(500).json("Internal Server Error, try again!");
+  }
+}
+
+export const getMargin = async(req, res)=>{
+  const userId = req.user._id;
+
+  const user = await User.findById(userId).select("-password -refreshToken");
+  console.log(user);
+  if(!user){
+    return res.status(404).json("User does not exists, Invalid Access Req!");
+  }
+
+
+  return res.status(200).json(user);
+}
 
 // const generateAccessTokenAndRefreshToken = async (userId) => {
 //   const user = await User.findById(userId);
