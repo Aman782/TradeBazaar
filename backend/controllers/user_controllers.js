@@ -171,8 +171,49 @@ export const getMargin = async(req, res)=>{
     return res.status(404).json("User does not exists, Invalid Access Req!");
   }
 
-
   return res.status(200).json(user);
+}
+
+export const sellStocks = async(req, res) =>{
+try {
+     const {selledStockMargin, stockName, qty} = req.body;
+  
+     const userId = req.user._id;
+  
+     const user = await User.findById(userId);
+     console.log(qty);
+  
+     if(!user){
+      return res.status(404).json("User does not exists, sellStocks fn!");
+     }
+  
+      const currUser = await User.findOne({_id: userId, "holdings.stockName": stockName});
+
+      let userHoldings = currUser.holdings;
+      let currUserMargin = currUser.margin;
+      for(let holding of userHoldings){
+        if(holding.stockName === stockName){
+          holding.quantity -= qty;
+          if(holding.quantity === 0){
+            userHoldings = userHoldings.filter(h => h.stockName !== stockName);
+            break;
+          }
+        }
+      }
+
+      currUser.holdings = userHoldings;
+      currUser.margin = currUserMargin + selledStockMargin;
+      
+      await currUser.save({validateBeforeSave: false});
+
+
+      console.log("updated user information", currUser);
+  
+      return res.status(200).json(currUser);
+} catch (error) {
+  console.log(error);
+  return res.status(500).json("Internal Server Error, In SellStocks!");
+}
 }
 
 // const generateAccessTokenAndRefreshToken = async (userId) => {
