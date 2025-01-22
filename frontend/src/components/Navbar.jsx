@@ -8,7 +8,7 @@ const Navbar = ({ isLoggedIn, setLoggedIn }) => {
 
   const handleOnLogout = async ()=>{
     try {
-      const res = await axios.get("http://localhost:8080/users/logout-user",  { withCredentials: true });
+      const res = await axios.get("https://tradebazaar-9a8c.onrender.com/users/logout-user",  { withCredentials: true });
       console.log(res);
   
       setLoggedIn(false);
