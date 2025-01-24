@@ -19,12 +19,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: (origin, callback) => {
-        callback(null, origin || "*");
-    },
+    origin: "https://tradebazaarfrontend.vercel.app",  // ✅ Replace with your frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    credentials: true,  // ✅ Required for cookies or authentication
 }));
+
 
 db_connection();
 
