@@ -19,7 +19,7 @@ const Login = ({setLoggedIn}) => {
     const user_data = {email, password};
 
     try {
-       const res = await axios.post("https://tradebazaar-9a8c.onrender.com/users/verify-user", user_data,  {
+       const res = await axios.post("https://tradebazaarbackend.onrender.com/users/verify-user", user_data,  {
         withCredentials: true // Sends cookies
     });
        console.log(res);
