@@ -59,7 +59,7 @@ export const loginUser = async (req, res) => {
          httpOnly: true,
          secure: true,  // ✅ Enable HTTPS
          sameSite: "None", // ✅ Allow cross-origin cookie sharing
-         domain: ".vercel.app", // ✅ Makes cookies accessible across subdomains
+         // domain: ".vercel.app", // ✅ Makes cookies accessible across subdomains
       };
   
       return res.status(200)
