@@ -18,7 +18,7 @@ const Signup = ({setLoggedIn}) => {
     e.preventDefault();
       
     try {
-      const response = await axios.post('https://tradebazaarbackend.onrender.com/users/register-user', {
+      const response = await axios.post('https://trade-bazaar-backend.vercel.app/users/register-user', {
         username,
         email,
         password,
