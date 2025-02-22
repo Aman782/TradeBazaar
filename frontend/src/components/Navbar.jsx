@@ -8,7 +8,7 @@ const Navbar = ({ isLoggedIn, setLoggedIn }) => {
 
   const handleOnLogout = async ()=>{
     try {
-      const res = await axios.get("https://tradebazaarbackend.onrender.com/users/logout-user",  { withCredentials: true });
+      const res = await axios.get("https://trade-bazaar-backend.vercel.app/users/logout-user",  { withCredentials: true });
       console.log(res);
   
       setLoggedIn(false);
