@@ -17,12 +17,13 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: (origin, callback) => {
-        callback(null, origin || "*");
-    },
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-}));
+        origin: ["https://tradebazaarfrontend.vercel.app", "https://tradebazaar-dashboard.vercel.app"], // ✅ Allow frontend and dashboard
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true, 
+    }););
+
+
+
 
 db_connection();
 

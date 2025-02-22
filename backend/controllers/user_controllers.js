@@ -56,10 +56,11 @@ export const loginUser = async (req, res) => {
       const accessToken = user.generateAccessToken();
   
       const options = {
-        httpOnly: true,
-        secure: false,
-        sameSite: 'Lax',
-      }
+         httpOnly: true,
+         secure: false,  // ✅ Enable HTTPS
+         sameSite: "None", // ✅ Allow cross-origin cookie sharing
+         // domain: ".vercel.app", // ✅ Makes cookies accessible across subdomains
+      };
   
       return res.status(200)
         .cookie("accessToken", accessToken, options)
@@ -86,9 +87,10 @@ export const logOutUser = async (req, res) => {
       
           const options = {
               httpOnly: true,
-              secure: false,
-              sameSite: 'Lax'
-          }
+              secure: false,  // ✅ Enable HTTPS
+              sameSite: "None", // ✅ Allow cross-origin cookie sharing
+              // domain: ".vercel.app", // ✅ Makes cookies accessible across subdomains
+           };
       
           return res.status(200)
           .clearCookie("accessToken", options)
