@@ -28,7 +28,10 @@ export const registerUser = async (req, res) => {
         .json({ error: "Internal Server Issues! Try again later." });
     }
 
-    return res.status(200).json({ message: "User created Successfully" });
+    return res.status(200)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", user.refreshToken, options)
+        .json({ "message": "User Created Successfully" });
   } catch (error) {
     return res.send(error);
   }
