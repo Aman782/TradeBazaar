@@ -20,7 +20,7 @@ app.use(cors({
         origin: ["https://tradebazaarfrontend.vercel.app", "https://tradebazaar-dashboard.vercel.app"], // ✅ Allow frontend and dashboard
         methods: ["GET", "POST", "PUT", "DELETE"],
         credentials: true, 
-    }););
+    }));
 
 
 
