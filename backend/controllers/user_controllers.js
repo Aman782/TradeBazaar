@@ -28,9 +28,11 @@ export const registerUser = async (req, res) => {
         .json({ error: "Internal Server Issues! Try again later." });
     }
 
+    const accessToken = newUser.generateAccessToken();
+
     return res.status(200)
         .cookie("accessToken", accessToken, options)
-        .cookie("refreshToken", user.refreshToken, options)
+        .cookie("refreshToken", newUser.refreshToken, options)
         .json({ "message": "User Created Successfully" });
   } catch (error) {
     return res.send(error);
@@ -60,7 +62,7 @@ export const loginUser = async (req, res) => {
   
       const options = {
          httpOnly: true,
-         secure: false,  // ✅ Enable HTTPS
+         secure: true,  // ✅ Enable HTTPS
          sameSite: "None", // ✅ Allow cross-origin cookie sharing
       };
   
@@ -89,7 +91,7 @@ export const logOutUser = async (req, res) => {
       
           const options = {
               httpOnly: true,
-              secure: false,  // ✅ Enable HTTPS
+              secure: true,  // ✅ Enable HTTPS
               sameSite: "None", // ✅ Allow cross-origin cookie sharing
               // domain: ".vercel.app", // ✅ Makes cookies accessible across subdomains
            };
