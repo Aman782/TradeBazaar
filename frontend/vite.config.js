@@ -3,5 +3,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: './',  // Fix asset loading issue
+  base: './', 
+  build: {
+    rollupOptions: {
+      external: ['youtube-player']
+    }
+  } 
 });
