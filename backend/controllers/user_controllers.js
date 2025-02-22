@@ -50,7 +50,7 @@ export const loginUser = async (req, res) => {
       const verification = await user.isPasswordCorrect(password);
   
       if (!verification) {
-        return res.status(401).json("Unauthorized Access!");
+        return res.status(401).jxson("Unauthorized Access!");
       }
       
       const accessToken = user.generateAccessToken();
@@ -59,7 +59,6 @@ export const loginUser = async (req, res) => {
          httpOnly: true,
          secure: false,  // ✅ Enable HTTPS
          sameSite: "None", // ✅ Allow cross-origin cookie sharing
-         // domain: ".vercel.app", // ✅ Makes cookies accessible across subdomains
       };
   
       return res.status(200)
