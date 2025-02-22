@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import Hero from './Hero'
 import FAQ from './FAQ'
 import FreeSignup from './FreeSignup'
@@ -6,13 +7,13 @@ import Pricing from './Pricing'
 import Dynamic from './Dynamic'
 import StudyFinance from './StudyFinance'
 
-const Home = () => {
+const Home = ({isLoggedIn}) => {
   return (
     <>   
-        <Hero />  
-        <FreeSignup />
+        <Hero isLoggedIn={isLoggedIn} />  
+        <FreeSignup isLoggedIn={isLoggedIn} />
         <Pricing />
-        <Dynamic />
+        <Dynamic isLoggedIn={isLoggedIn} />
         <StudyFinance />    
     </>
   )

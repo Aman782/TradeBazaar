@@ -18,8 +18,8 @@ function App() {
     <BrowserRouter>
       <Navbar isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
+        <Route path='/' element={<Home isLoggedIn={isLoggedIn} />} />
+        <Route path='/about' element={<About isLoggedIn={isLoggedIn} />} />
         <Route path='/contact' element={<Contact />}/>
         <Route path='/explore' element={<Explore />} />
         <Route path='/signup' element={<Signup setLoggedIn={setLoggedIn} />} />

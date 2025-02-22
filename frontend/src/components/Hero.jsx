@@ -1,6 +1,6 @@
 import React from 'react';
 import './Hero.css';
-const Hero = () => {
+const Hero = ({isLoggedIn}) => {
   return (
     <>
       <div className="container-fluid p-5 fontstyle" style={{ backgroundColor: "#f4f8fc" }}>
@@ -35,6 +35,8 @@ const Hero = () => {
                 Trade smarter, invest confidently. At TradeBazaar, discover tools and insights to simplify trading, manage risks, and grow your portfolio seamlessly. Start your journey toward financial success with the support you can trust!
               </p>
               <div className="text-center mt-4">
+              <a href={ isLoggedIn ? 'https://tradebazaar-dashboard.vercel.app/dashboard' : '/signup' }>
+                
                 <button
                   className="btn btn-primary"
                   style={{
@@ -47,6 +49,7 @@ const Hero = () => {
                 >
                   Get Started
                 </button>
+              </a>
               </div>
             </div>
           </div>

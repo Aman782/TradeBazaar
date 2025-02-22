@@ -1,8 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import db_connection from './db/db_connection.js';
-import { verify_JWT_Token } from './middlewares/authentication.js';
-import User from './models/user_models.js';
 import cors from 'cors';
 import { userRoutes } from './routes/user_routes.js';
 import cookieParser from 'cookie-parser';

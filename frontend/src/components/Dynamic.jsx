@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const Dynamic = () => {
+const Dynamic = ({isLoggedIn}) => {
   const keywords = ["Future", "Commodities", "Options", "Currencies"];
   const [text, setText] = useState(keywords[0]);
   const [index, setIndex] = useState(0);
@@ -94,6 +95,7 @@ const Dynamic = () => {
             </div>
             {/* CTA Button */}
             <div className="text-center">
+            {!isLoggedIn? <Link to={'/signup'}>
               <button
                 className="btn btn-lg btn-primary fs-5 mt-4"
                 style={{
@@ -111,6 +113,7 @@ const Dynamic = () => {
                 Open Free Demat Account{" "}
                 <i className="fa-solid fa-arrow-trend-up"></i>
               </button>
+            </Link>:""}     
             </div>
           </div>
 

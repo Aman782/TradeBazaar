@@ -4,7 +4,7 @@ import WrapPeopleCards from "./WrapPeopleCards";
 import Profile from "./Profile";
 import FAQ from "./FAQ";
 
-const About = () => {
+const About = ({isLoggedIn}) => {
   return (
     <>
       {/* Hero Section */}
@@ -20,7 +20,7 @@ const About = () => {
           <div className="col-md-6 px-4">
             <h2 className="fw-bold fs-1 text-primary mb-3">TradeBazaar</h2>
             <p className="fs-5 text-dark">
-              Partner with India's leading wealth-tech platform.
+              Partner with India leading wealth-tech platform.
             </p>
             <span className="fs-4 text-success fw-bold d-block mb-2">
               Earn over ₹ 1 lakh/month
@@ -29,7 +29,11 @@ const About = () => {
               Register as an Authorised Person (AP) and earn incentives for
               referring customers.
             </p>
-            <button
+
+
+
+            <a href={ isLoggedIn ? 'https://tradebazaar-dashboard.vercel.app/dashboard' : '/signup' }>
+             <button
               className="btn btn-primary mt-3 px-4 py-2"
               style={{
                 borderRadius: "30px",
@@ -40,6 +44,7 @@ const About = () => {
             >
               Get Started
             </button>
+            </a>
           </div>
 
           {/* Right Section */}
